@@ -5,44 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salão de Beleza Jucy</title>
   <meta name="description" content="Salão de Beleza Jucy em Boa Vista - RR. Designer de sobrancelha, henna, cílios, limpeza de pele, dermaplane, unhas, cabelo e depilação com atendimento profissional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0a0d;
-      --bg-soft: #171116;
-      --card: rgba(255,255,255,0.06);
-      --card-strong: rgba(255,255,255,0.1);
-      --text: #fff9fb;
-      --muted: #dbc8d0;
+      --bg: #120b10;
+      --bg-2: #1a1016;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.08);
+      --text: #fff7fa;
+      --muted: #d9c6cf;
       --line: rgba(255,255,255,0.12);
-      --gold: #f2d38b;
-      --gold-2: #c99a3c;
-      --pink: #f6d7e2;
-      --accent: #ff7aa2;
-      --success: #25D366;
+      --gold: #f2d28a;
+      --gold-2: #c99646;
+      --rose: #ff8eb1;
+      --rose-2: #ffd8e6;
+      --whats: #25D366;
+      --dark: #0f0a0d;
       --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
       --max: 1180px;
+      --header-h: 88px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,122,162,.12), transparent 32%),
-        radial-gradient(circle at top right, rgba(242,211,139,.12), transparent 26%),
-        linear-gradient(180deg, #120c10 0%, #0d080b 100%);
+      font-family: 'Inter', Arial, sans-serif;
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 116, 160, .16), transparent 28%),
+        radial-gradient(circle at top right, rgba(242, 210, 138, .10), transparent 26%),
+        linear-gradient(180deg, #140c11 0%, #0d070b 100%);
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
 
     .container {
-      width: min(100% - 32px, var(--max));
+      width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
     }
 
@@ -50,284 +57,336 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(16px);
-      background: rgba(10, 7, 9, 0.72);
+      backdrop-filter: blur(18px);
+      background: rgba(12, 8, 11, .82);
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      min-height: 80px;
+      min-height: var(--header-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
+      flex-shrink: 0;
     }
 
     .brand-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      color: #21120c;
       font-weight: 900;
-      box-shadow: var(--shadow);
+      font-size: 22px;
+      color: #22130d;
+      background: linear-gradient(135deg, var(--gold), var(--rose));
+      box-shadow: 0 12px 28px rgba(242,210,138,.18);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.2rem;
+      line-height: 1.1;
+    }
+
+    .brand-sub {
       color: var(--muted);
-      font-size: 14px;
+      font-size: .92rem;
+      margin-top: 4px;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .nav-center a {
+      color: var(--muted);
+      font-size: .98rem;
+      font-weight: 500;
+      transition: .22s ease;
+      white-space: nowrap;
+    }
+
+    .nav-center a:hover { color: #fff; }
+
+    .menu-btn {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .menu-btn span,
+    .menu-btn span::before,
+    .menu-btn span::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 99px;
+      position: relative;
+      transition: .25s ease;
+      content: "";
+    }
+
+    .menu-btn span::before { position: absolute; top: -6px; }
+    .menu-btn span::after { position: absolute; top: 6px; }
+    .menu-btn.active span { background: transparent; }
+    .menu-btn.active span::before { top: 0; transform: rotate(45deg); }
+    .menu-btn.active span::after { top: 0; transform: rotate(-45deg); }
 
     .btn {
-      border: 0;
-      border-radius: 999px;
-      padding: 14px 22px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .25s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 800;
+      transition: .22s ease;
+      white-space: nowrap;
     }
+
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-primary {
-      color: #20120c;
-      background: linear-gradient(135deg, var(--gold), #f4b878);
-      box-shadow: 0 10px 30px rgba(242,211,139,.25);
+      color: #24150d;
+      background: linear-gradient(135deg, var(--gold), #f4b879);
+      box-shadow: 0 12px 26px rgba(242,210,138,.24);
     }
 
-    .btn-primary:hover,
-    .btn-dark:hover,
-    .btn-whats:hover { transform: translateY(-2px); }
-
     .btn-dark {
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
+      color: #fff;
+      background: rgba(255,255,255,.06);
       border: 1px solid var(--line);
     }
 
     .btn-whats {
-      color: white;
-      background: var(--success);
-      box-shadow: 0 12px 24px rgba(37,211,102,.18);
+      color: #fff;
+      background: linear-gradient(135deg, #27de70, #1fb65a);
+      box-shadow: 0 14px 28px rgba(37,211,102,.24);
+      padding: 14px 24px;
+      font-size: .98rem;
+    }
+
+    .nav-action {
+      flex-shrink: 0;
     }
 
     .hero {
-      padding: 72px 0 34px;
+      padding: 56px 0 40px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 28px;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
       align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
-      gap: 10px;
       align-items: center;
-      padding: 10px 14px;
+      gap: 10px;
+      padding: 11px 16px;
       border-radius: 999px;
-      color: var(--pink);
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,.05);
       border: 1px solid var(--line);
-      font-size: 13px;
+      color: var(--rose-2);
+      font-size: .92rem;
       margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: clamp(38px, 6vw, 70px);
-      line-height: .98;
       margin: 0 0 16px;
-      letter-spacing: -1.6px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .96;
+      letter-spacing: -0.05em;
+      max-width: 720px;
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, #fff, var(--gold), #ffc4d5);
+      background: linear-gradient(135deg, #fff, var(--gold), #ffc8d9);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
       margin: 0;
       color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 1.08rem;
+      line-height: 1.75;
       max-width: 650px;
     }
 
     .hero-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 14px;
-      margin: 28px 0 26px;
+      flex-wrap: wrap;
+      margin: 28px 0 24px;
     }
 
-    .hero-points {
+    .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 14px;
+      max-width: 720px;
     }
 
-    .point {
-      padding: 16px;
-      border-radius: 18px;
-      background: var(--card);
+    .stat {
+      background: var(--panel);
       border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
     }
 
-    .point strong {
+    .stat strong {
       display: block;
-      font-size: 20px;
-      margin-bottom: 4px;
+      font-size: 1.35rem;
       color: var(--gold);
+      margin-bottom: 4px;
     }
 
-    .point span {
+    .stat span {
       color: var(--muted);
-      font-size: 14px;
+      font-size: .95rem;
+      line-height: 1.4;
     }
 
     .hero-visual {
       position: relative;
-      min-height: 580px;
+      min-height: 620px;
     }
 
-    .stack {
-      position: relative;
-      height: 100%;
-    }
-
-    .photo-main,
-    .photo-small,
-    .info-card {
+    .hero-card,
+    .hero-small,
+    .hero-info {
       position: absolute;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.10);
       box-shadow: var(--shadow);
-      background: #1b1419;
+      background: #1a1217;
     }
 
-    .photo-main {
-      inset: 0 80px 90px 0;
+    .hero-card {
+      inset: 0 100px 90px 0;
     }
 
-    .photo-small {
-      width: 250px;
+    .hero-small {
+      width: 260px;
       right: 0;
-      top: 68px;
+      top: 36px;
+      aspect-ratio: 1 / 1;
     }
 
-    .photo-main img,
-    .photo-small img {
+    .hero-info {
+      right: 8px;
+      bottom: 0;
+      width: 300px;
+      padding: 22px;
+      background: rgba(18,12,16,.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card img,
+    .hero-small img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .info-card {
-      right: 14px;
-      bottom: 0;
-      width: 290px;
-      padding: 20px;
-      backdrop-filter: blur(16px);
-      background: rgba(20,14,18,.9);
-    }
-
-    .info-card .mini {
-      color: var(--pink);
-      font-size: 13px;
+    .mini-label {
+      color: var(--rose-2);
+      font-size: .8rem;
       text-transform: uppercase;
       letter-spacing: .12em;
+      font-weight: 700;
     }
 
-    .info-card h3 {
+    .hero-info h3 {
+      font-size: 1.6rem;
       margin: 10px 0 8px;
-      font-size: 24px;
     }
 
-    .info-card p {
+    .hero-info p {
+      margin: 0 0 14px;
       color: var(--muted);
-      margin: 0 0 16px;
-      line-height: 1.6;
-      font-size: 14px;
+      line-height: 1.7;
+      font-size: .95rem;
     }
 
-    .badges {
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .badge {
+    .tag {
       padding: 9px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.06);
       border: 1px solid var(--line);
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 600;
+      background: rgba(255,255,255,.05);
+      font-size: .84rem;
+      font-weight: 700;
     }
 
-    section {
-      padding: 36px 0;
-    }
+    section { padding: 44px 0; }
 
     .section-head {
       display: flex;
       justify-content: space-between;
-      align-items: end;
-      gap: 20px;
+      align-items: flex-end;
+      gap: 18px;
       margin-bottom: 22px;
     }
 
     .section-head h2 {
       margin: 0 0 8px;
-      font-size: clamp(28px, 4vw, 44px);
-      letter-spacing: -.03em;
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -0.04em;
     }
 
     .section-head p {
       margin: 0;
+      max-width: 720px;
       color: var(--muted);
-      max-width: 680px;
       line-height: 1.7;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .service-card,
-    .review-card,
-    .contact-card,
-    .gallery-card,
-    .premium {
-      background: var(--card);
+    .card {
+      background: var(--panel);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: var(--shadow);
     }
 
     .service-card {
@@ -336,25 +395,24 @@
       min-height: 100%;
     }
 
-    .service-image {
-      height: 230px;
+    .service-img {
+      height: 240px;
       overflow: hidden;
     }
 
-    .service-image img {
+    .service-img img,
+    .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .5s ease;
+      transition: transform .45s ease;
     }
 
-    .service-card:hover .service-image img,
-    .gallery-card:hover img {
-      transform: scale(1.05);
-    }
+    .service-card:hover .service-img img,
+    .gallery-item:hover img { transform: scale(1.05); }
 
     .service-body {
-      padding: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -363,24 +421,25 @@
     .service-top {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
-      align-items: start;
+      align-items: flex-start;
+      gap: 14px;
       margin-bottom: 10px;
     }
 
     .service-title {
-      font-size: 22px;
       margin: 0;
+      font-size: 1.45rem;
+      line-height: 1.2;
     }
 
     .price {
-      white-space: nowrap;
-      background: linear-gradient(135deg, var(--gold), #ffd4a4);
-      color: #25150e;
-      font-weight: 800;
-      border-radius: 999px;
+      flex-shrink: 0;
       padding: 10px 14px;
-      font-size: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), #ffd2a0);
+      color: #2a170d;
+      font-size: .9rem;
+      font-weight: 900;
     }
 
     .service-body p {
@@ -389,58 +448,58 @@
       line-height: 1.7;
     }
 
-    .list {
+    .bullets {
       display: grid;
       gap: 8px;
       margin: 0 0 18px;
-      color: var(--pink);
-      font-size: 14px;
+      color: var(--rose-2);
+      font-size: .95rem;
     }
 
     .service-actions {
-      margin-top: auto;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: auto;
     }
 
-    .premium-wrap {
+    .premium-grid {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.08fr .92fr;
       gap: 18px;
-      margin-top: 18px;
     }
 
-    .premium {
-      padding: 26px;
+    .premium-box {
+      padding: 28px;
       position: relative;
+      overflow: hidden;
     }
 
-    .premium::before {
+    .premium-box::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(242,211,139,.12), rgba(255,122,162,.08));
+      background: linear-gradient(135deg, rgba(242,210,138,.10), rgba(255,142,177,.08));
       pointer-events: none;
     }
 
-    .premium > * { position: relative; }
+    .premium-box > * { position: relative; }
 
-    .premium h3 {
+    .premium-box h3 {
       margin: 0 0 10px;
-      font-size: 28px;
+      font-size: 1.9rem;
     }
 
-    .premium p {
-      margin: 0 0 18px;
+    .premium-box p {
+      margin: 0 0 16px;
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
-    .premium ul {
+    .premium-box ul {
       margin: 0 0 22px;
       padding-left: 18px;
-      color: var(--pink);
+      color: var(--rose-2);
       line-height: 1.9;
     }
 
@@ -450,22 +509,37 @@
     }
 
     .menu-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
       padding: 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,.04);
       border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
     }
 
-    .menu-item strong { display: block; margin-bottom: 6px; }
-    .menu-item span { color: var(--muted); font-size: 14px; }
-    .menu-item b { color: var(--gold); }
+    .menu-item strong {
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
 
-    .reviews-grid {
+    .menu-item span {
+      color: var(--muted);
+      font-size: .93rem;
+      line-height: 1.5;
+    }
+
+    .menu-item b {
+      color: var(--gold);
+      white-space: nowrap;
+      font-size: 1rem;
+    }
+
+    .reviews {
       display: grid;
-      grid-template-columns: 1.1fr .9fr .9fr;
+      grid-template-columns: 1.1fr .95fr .95fr;
       gap: 18px;
     }
 
@@ -475,61 +549,52 @@
 
     .stars {
       color: var(--gold);
+      font-size: 1.05rem;
       letter-spacing: 2px;
       margin-bottom: 12px;
-      font-size: 18px;
     }
 
     .review-card p {
       margin: 0 0 16px;
       color: var(--muted);
       line-height: 1.8;
+      font-size: 1rem;
     }
 
-    .review-author {
+    .review-meta {
       display: flex;
       justify-content: space-between;
       gap: 12px;
       align-items: center;
-      color: var(--text);
-      font-weight: 700;
     }
 
-    .review-author small {
-      display: block;
-      color: var(--muted);
-      font-weight: 500;
-      margin-top: 4px;
-    }
+    .review-meta strong { font-size: 1rem; }
+    .review-meta small { color: var(--muted); display: block; margin-top: 4px; }
 
-    .score-box {
-      min-width: 120px;
+    .score {
       text-align: right;
+      min-width: 118px;
     }
 
-    .score-box strong {
+    .score b {
       display: block;
-      font-size: 42px;
+      font-size: 2.5rem;
       line-height: 1;
       color: var(--gold);
     }
 
-    .gallery-grid {
+    .gallery {
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 14px;
     }
 
-    .gallery-card {
-      aspect-ratio: 1 / 1.15;
+    .gallery-item {
+      aspect-ratio: 1 / 1.12;
       overflow: hidden;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .45s ease;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: var(--panel);
     }
 
     .contact-grid {
@@ -539,12 +604,12 @@
     }
 
     .contact-card {
-      padding: 24px;
+      padding: 26px;
     }
 
     .contact-card h3 {
       margin: 0 0 10px;
-      font-size: 26px;
+      font-size: 1.9rem;
     }
 
     .contact-card p,
@@ -553,72 +618,69 @@
       line-height: 1.8;
     }
 
-    .contact-card ul {
-      margin: 10px 0 0;
-      padding-left: 18px;
-    }
-
     .contact-info {
       display: grid;
       gap: 12px;
-      margin: 18px 0 24px;
+      margin: 18px 0 22px;
     }
 
-    .info-line {
-      padding: 14px 16px;
+    .contact-line {
+      padding: 15px 16px;
       border-radius: 18px;
       background: rgba(255,255,255,.04);
       border: 1px solid var(--line);
     }
 
-    .info-line strong {
+    .contact-line strong {
       display: block;
+      color: var(--rose-2);
       margin-bottom: 6px;
-      color: var(--pink);
-      font-size: 13px;
+      font-size: .78rem;
       text-transform: uppercase;
       letter-spacing: .12em;
     }
 
+    .contact-card ul { padding-left: 18px; margin: 0; }
+
     iframe {
       width: 100%;
-      height: 100%;
-      min-height: 390px;
+      min-height: 420px;
       border: 0;
-      border-radius: 24px;
-      filter: grayscale(.1) saturate(.9) contrast(1.03);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
     }
 
     .cta {
-      padding-bottom: 84px;
+      padding-bottom: 86px;
     }
 
     .cta-box {
       padding: 30px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(242,211,139,.12), rgba(255,122,162,.14));
+      border-radius: 32px;
       border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(242,210,138,.10), rgba(255,142,177,.12));
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
       align-items: center;
+      justify-content: space-between;
+      gap: 18px;
       box-shadow: var(--shadow);
     }
 
     .cta-box h2 {
-      margin: 0 0 8px;
-      font-size: clamp(28px, 4vw, 42px);
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -0.04em;
     }
 
     .cta-box p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
       max-width: 720px;
     }
 
     .footer {
-      padding: 26px 0 90px;
+      padding: 28px 0 96px;
       border-top: 1px solid var(--line);
       color: var(--muted);
     }
@@ -626,7 +688,7 @@
     .footer-wrap {
       display: flex;
       justify-content: space-between;
-      gap: 18px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
@@ -634,17 +696,20 @@
       position: fixed;
       right: 18px;
       bottom: 18px;
-      z-index: 999;
       width: 62px;
       height: 62px;
       border-radius: 50%;
       display: grid;
       place-items: center;
+      background: var(--whats);
+      color: #fff;
+      box-shadow: 0 18px 34px rgba(37,211,102,.28);
       font-size: 30px;
-      color: white;
-      background: var(--success);
-      box-shadow: 0 16px 36px rgba(37,211,102,.32);
-      text-decoration: none;
+      z-index: 999;
+    }
+
+    .mobile-panel {
+      display: none;
     }
 
     .reveal {
@@ -658,79 +723,159 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1120px) {
+      .nav-center {
+        gap: 16px;
+      }
+
+      .btn-whats {
+        padding: 13px 18px;
+        font-size: .93rem;
+      }
+
       .hero-grid,
-      .premium-wrap,
-      .reviews-grid,
+      .premium-grid,
+      .reviews,
       .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .gallery-grid,
-      .grid-3 {
+      .grid-3,
+      .gallery {
         grid-template-columns: repeat(2, minmax(0,1fr));
       }
 
       .hero-visual {
-        min-height: 520px;
+        min-height: 560px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --header-h: 76px;
+      }
+
+      .nav {
+        min-height: var(--header-h);
+      }
+
+      .nav-center,
+      .nav-action {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+
+      .mobile-panel {
+        display: none;
+        padding: 0 0 18px;
+      }
+
+      .mobile-panel.open {
+        display: block;
+      }
+
+      .mobile-nav {
+        display: grid;
+        gap: 10px;
+        padding-top: 8px;
+      }
+
+      .mobile-nav a,
+      .mobile-nav button {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .hero h1 {
+        max-width: none;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 760px) {
-      .nav {
-        padding: 14px 0;
-        align-items: start;
-        flex-direction: column;
+      .container {
+        width: min(calc(100% - 20px), var(--max));
       }
-
-      .nav-links { gap: 12px; }
 
       .hero {
-        padding-top: 36px;
+        padding-top: 24px;
       }
 
-      .hero h1 { font-size: 40px; }
-
-      .hero p { font-size: 16px; }
-
-      .hero-points,
-      .grid-3,
-      .gallery-grid {
-        grid-template-columns: 1fr;
+      .hero h1 {
+        font-size: 2.95rem;
       }
 
-      .hero-visual {
-        min-height: 480px;
+      .hero p {
+        font-size: 1rem;
       }
 
-      .photo-main {
-        inset: 0 24px 110px 0;
-      }
-
-      .photo-small {
-        width: 180px;
-        top: 30px;
-      }
-
-      .info-card {
-        width: calc(100% - 28px);
-        right: 14px;
-      }
-
+      .hero-actions,
+      .service-actions,
       .cta-box,
       .section-head,
       .footer-wrap {
         flex-direction: column;
-        align-items: start;
+        align-items: stretch;
       }
 
-      .btn {
+      .btn,
+      .service-actions .btn,
+      .cta-box .btn {
         width: 100%;
       }
 
-      .service-actions .btn {
-        width: auto;
-        flex: 1;
+      .grid-3,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 440px;
+      }
+
+      .hero-card {
+        inset: 0 22px 98px 0;
+      }
+
+      .hero-small {
+        width: 165px;
+        top: 22px;
+      }
+
+      .hero-info {
+        width: calc(100% - 18px);
+        right: 9px;
+        padding: 18px;
+      }
+
+      .brand-title {
+        font-size: 1rem;
+      }
+
+      .brand-sub {
+        font-size: .85rem;
+      }
+
+      .score {
+        min-width: 90px;
+      }
+
+      .score b {
+        font-size: 2rem;
+      }
+
+      iframe {
+        min-height: 320px;
       }
     }
   </style>
@@ -741,12 +886,12 @@
       <a href="#inicio" class="brand">
         <div class="brand-badge">J</div>
         <div>
-          <div>Salão de Beleza Jucy</div>
-          <small style="color: var(--muted); font-weight: 500;">Boa Vista • RR</small>
+          <div class="brand-title">Salão de Beleza Jucy</div>
+          <div class="brand-sub">Boa Vista • RR</div>
         </div>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-center">
         <a href="#servicos">Serviços</a>
         <a href="#destaques">Destaques</a>
         <a href="#avaliacoes">Avaliações</a>
@@ -754,7 +899,24 @@
         <a href="#contato">Contato</a>
       </nav>
 
-      <a class="btn btn-whats" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20Sal%C3%A3o%20de%20Beleza%20Jucy.">Agendar no WhatsApp</a>
+      <div class="nav-action">
+        <a class="btn btn-whats" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20Sal%C3%A3o%20de%20Beleza%20Jucy.">Agendar no WhatsApp</a>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+
+    <div class="container mobile-panel" id="mobilePanel">
+      <div class="mobile-nav">
+        <a class="btn btn-dark" href="#servicos">Serviços</a>
+        <a class="btn btn-dark" href="#destaques">Destaques</a>
+        <a class="btn btn-dark" href="#avaliacoes">Avaliações</a>
+        <a class="btn btn-dark" href="#galeria">Galeria</a>
+        <a class="btn btn-dark" href="#contato">Contato</a>
+        <a class="btn btn-whats" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20Sal%C3%A3o%20de%20Beleza%20Jucy.">Agendar no WhatsApp</a>
+      </div>
     </div>
   </header>
 
@@ -765,7 +927,7 @@
           <div class="eyebrow">✨ Beleza, cuidado e atendimento com personalidade</div>
           <h1>Seu momento de beleza começa no <span>Salão de Beleza Jucy</span></h1>
           <p>
-            Designer de sobrancelha, henna, cílios, limpeza de pele, dermaplane, cabelo, manicure, manutenção de unhas e depilação facial e corporal em um ambiente acolhedor e profissional.
+            Designer de sobrancelha, henna, cílios, limpeza de pele, dermaplane, cabelo, manicure, manutenção de unhas e depilação facial e corporal em um ambiente acolhedor, elegante e profissional.
           </p>
 
           <div class="hero-actions">
@@ -773,39 +935,37 @@
             <a class="btn btn-dark" target="_blank" href="https://maps.google.com/?q=Av.%20Rui%20Bara%C3%BAna%2C%201746%20-%20Uni%C3%A3o%2C%20Boa%20Vista%20-%20RR%2C%2069313-748">Ver localização</a>
           </div>
 
-          <div class="hero-points">
-            <div class="point">
+          <div class="hero-stats">
+            <div class="stat">
               <strong>4,5 ★</strong>
-              <span>Avaliação dos clientes</span>
+              <span>Avaliação média dos clientes</span>
             </div>
-            <div class="point">
+            <div class="stat">
               <strong>61+</strong>
               <span>Avaliações no Google</span>
             </div>
-            <div class="point">
+            <div class="stat">
               <strong>Até 18h</strong>
-              <span>Atendimento no dia</span>
+              <span>Atendimento diário</span>
             </div>
           </div>
         </div>
 
         <div class="hero-visual reveal visible">
-          <div class="stack">
-            <div class="photo-main">
-              <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80" alt="Modelo com maquiagem e cabelo em salão de beleza" />
-            </div>
-            <div class="photo-small">
-              <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=900&q=80" alt="Procedimento de design de sobrancelha" />
-            </div>
-            <div class="info-card">
-              <div class="mini">Procedimentos em destaque</div>
-              <h3>Visual renovado</h3>
-              <p>Serviços pensados para valorizar seu rosto, realçar sua beleza e elevar sua autoestima com resultado caprichado.</p>
-              <div class="badges">
-                <span class="badge">Sobrancelha + Henna</span>
-                <span class="badge">Cílios R$ 90</span>
-                <span class="badge">Dermaplane R$ 150</span>
-              </div>
+          <div class="hero-card">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80" alt="Modelo em salão de beleza" />
+          </div>
+          <div class="hero-small">
+            <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=900&q=80" alt="Design de sobrancelha" />
+          </div>
+          <div class="hero-info">
+            <div class="mini-label">Procedimentos em destaque</div>
+            <h3>Visual renovado</h3>
+            <p>Serviços pensados para valorizar o rosto, elevar a autoestima e entregar um resultado bonito, delicado e marcante.</p>
+            <div class="tags">
+              <span class="tag">Sobrancelha + Henna</span>
+              <span class="tag">Cílios R$ 90</span>
+              <span class="tag">Dermaplane R$ 150</span>
             </div>
           </div>
         </div>
@@ -816,73 +976,73 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Serviços que valorizam sua beleza</h2>
-            <p>Uma seleção completa de cuidados para unhas, rosto, sobrancelhas, cílios e cabelo. Tudo organizado para apresentar o salão de forma mais profissional e aumentar conversão no WhatsApp.</p>
+            <h2>Serviços organizados para vender melhor</h2>
+            <p>Estrutura mais limpa, forte e profissional, destacando os serviços com maior valor percebido e facilitando o agendamento direto pelo WhatsApp.</p>
           </div>
         </div>
 
         <div class="grid-3">
-          <article class="service-card reveal">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80" alt="Serviço de design de sobrancelha" />
+          <article class="card service-card reveal">
+            <div class="service-img">
+              <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80" alt="Designer de sobrancelha" />
             </div>
             <div class="service-body">
               <div class="service-top">
-                <h3 class="service-title">Sobrancelhas & Cílios</h3>
+                <h3 class="service-title">Sobrancelhas e cílios</h3>
                 <div class="price">R$ 90</div>
               </div>
-              <p>Realce do olhar com acabamento delicado, alinhamento e efeito visual elegante.</p>
-              <div class="list">
+              <p>Procedimentos voltados para realçar o olhar com acabamento mais elegante e harmonioso.</p>
+              <div class="bullets">
                 <span>• Design de sobrancelha</span>
                 <span>• Henna</span>
                 <span>• Cílios</span>
               </div>
               <div class="service-actions">
-                <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20agendar%20design%20de%20sobrancelha%20ou%20c%C3%ADlios.">Agendar</a>
-                <a class="btn btn-dark" href="#contato">Saber mais</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" alt="Limpeza de pele em clínica estética" />
-            </div>
-            <div class="service-body">
-              <div class="service-top">
-                <h3 class="service-title">Cuidados Faciais</h3>
-                <div class="price">R$ 150</div>
-              </div>
-              <p>Procedimentos faciais pensados para sensação de pele renovada, limpa e luminosa.</p>
-              <div class="list">
-                <span>• Limpeza de pele</span>
-                <span>• Dermaplane</span>
-                <span>• Preparação para eventos</span>
-              </div>
-              <div class="service-actions">
-                <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20agendar%20limpeza%20de%20pele%20ou%20dermaplane.">Agendar</a>
+                <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20agendar%20designer%20de%20sobrancelha%20ou%20c%C3%ADlios.">Agendar</a>
                 <a class="btn btn-dark" href="#destaques">Ver destaque</a>
               </div>
             </div>
           </article>
 
-          <article class="service-card reveal">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" alt="Cuidado com unhas em salão de beleza" />
+          <article class="card service-card reveal">
+            <div class="service-img">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" alt="Limpeza de pele" />
             </div>
             <div class="service-body">
               <div class="service-top">
-                <h3 class="service-title">Unhas, Cabelo & Depilação</h3>
-                <div class="price">Sob consulta</div>
+                <h3 class="service-title">Cuidados faciais</h3>
+                <div class="price">R$ 150</div>
               </div>
-              <p>Serviços variados para rotina de beleza com atendimento cuidadoso e ambiente acolhedor.</p>
-              <div class="list">
+              <p>Pele com aparência renovada, mais limpa e preparada para uma rotina de autocuidado e beleza.</p>
+              <div class="bullets">
+                <span>• Limpeza de pele</span>
+                <span>• Dermaplane</span>
+                <span>• Acabamento mais uniforme</span>
+              </div>
+              <div class="service-actions">
+                <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20agendar%20limpeza%20de%20pele%20ou%20dermaplane.">Agendar</a>
+                <a class="btn btn-dark" href="#contato">Consultar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card service-card reveal">
+            <div class="service-img">
+              <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" alt="Unhas em salão de beleza" />
+            </div>
+            <div class="service-body">
+              <div class="service-top">
+                <h3 class="service-title">Unhas, cabelo e depilação</h3>
+                <div class="price">Consultar</div>
+              </div>
+              <p>Atendimento completo para rotina de beleza com serviços diversos em um só lugar.</p>
+              <div class="bullets">
                 <span>• Manicure e manutenção de unhas</span>
-                <span>• Cabelo</span>
+                <span>• Cuidados com cabelo</span>
                 <span>• Depilação corporal e facial</span>
               </div>
               <div class="service-actions">
-                <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20saber%20os%20valores%20de%20unhas%2C%20cabelo%20ou%20depila%C3%A7%C3%A3o.">Consultar</a>
+                <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20saber%20os%20valores%20de%20unhas%2C%20cabelo%20ou%20depila%C3%A7%C3%A3o.">Consultar valores</a>
                 <a class="btn btn-dark" href="#galeria">Ver galeria</a>
               </div>
             </div>
@@ -895,51 +1055,49 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Destaques premium do salão</h2>
-            <p>Esta parte deixa o site com cara de empresa séria e valoriza os procedimentos com maior apelo visual e melhor percepção de valor.</p>
+            <h2>Procedimentos premium em destaque</h2>
+            <p>Bloco criado para transmitir mais valor e posicionar o salão com aparência de marca mais refinada.</p>
           </div>
         </div>
 
-        <div class="premium-wrap">
-          <div class="premium reveal">
-            <h3>Design de sobrancelha, henna e cílios</h3>
-            <p>
-              Um combo de alto impacto visual para quem quer sobrancelhas bem definidas e olhar marcante. Ideal para rotina, eventos e quem busca praticidade no dia a dia.
-            </p>
+        <div class="premium-grid">
+          <article class="card premium-box reveal">
+            <h3>Designer de sobrancelha, henna e cílios</h3>
+            <p>Uma combinação forte para quem quer um olhar mais definido, delicado e marcante. Ideal para rotina, compromissos e ocasiões especiais.</p>
             <ul>
-              <li>Acabamento mais harmônico para o rosto</li>
-              <li>Visual delicado, elegante e mais marcante</li>
-              <li>Atendimento personalizado</li>
+              <li>Visual mais harmônico para o rosto</li>
+              <li>Acabamento bem cuidado</li>
+              <li>Atendimento pensado para valorizar cada cliente</li>
             </ul>
             <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20agendar%20designer%20de%20sobrancelha%20com%20henna%20ou%20c%C3%ADlios.">Quero agendar este serviço</a>
-          </div>
+          </article>
 
-          <div class="premium reveal">
+          <article class="card premium-box reveal">
             <h3>Menu rápido</h3>
             <div class="menu-list">
               <div class="menu-item">
                 <div>
-                  <strong>Designer de sobrancelha + henna + cílios</strong>
-                  <span>Especial em valorização do olhar</span>
+                  <strong>Designer de sobrancelha / henna / cílios</strong>
+                  <span>Especial para realce do olhar</span>
                 </div>
                 <b>R$ 90</b>
               </div>
               <div class="menu-item">
                 <div>
                   <strong>Limpeza de pele + dermaplane</strong>
-                  <span>Pele com aspecto renovado e mais uniforme</span>
+                  <span>Pele com aspecto mais renovado</span>
                 </div>
                 <b>R$ 150</b>
               </div>
               <div class="menu-item">
                 <div>
                   <strong>Unhas, cabelo e depilação</strong>
-                  <span>Valores conforme o serviço desejado</span>
+                  <span>Valores conforme o procedimento</span>
                 </div>
                 <b>Consultar</b>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -948,44 +1106,44 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Clientes que recomendam</h2>
-            <p>As avaliações reforçam confiança. Aqui elas entram como prova social direta, uma das partes mais importantes para gerar agendamento.</p>
+            <h2>Prova social que passa confiança</h2>
+            <p>Avaliações bem posicionadas ajudam muito na decisão da cliente. Aqui elas entram com aparência mais premium e organizada.</p>
           </div>
         </div>
 
-        <div class="reviews-grid">
-          <article class="review-card reveal">
+        <div class="reviews">
+          <article class="card review-card reveal">
             <div class="stars">★★★★★</div>
             <p>“Profissionais excelentes, meu cabelo e unhas ficaram maravilhosos.”</p>
-            <div class="review-author">
+            <div class="review-meta">
               <div>
-                Clientes do Google
+                <strong>Clientes do Google</strong>
                 <small>Feedback público</small>
               </div>
-              <div class="score-box">
-                <strong>4,5</strong>
+              <div class="score">
+                <b>4,5</b>
                 <small>61 avaliações</small>
               </div>
             </div>
           </article>
 
-          <article class="review-card reveal">
+          <article class="card review-card reveal">
             <div class="stars">★★★★★</div>
             <p>“Perfeito, tem mais de cinco anos que eu faço uso dos serviços...”</p>
-            <div class="review-author">
+            <div class="review-meta">
               <div>
-                Clientes do Google
-                <small>Fidelização de longo prazo</small>
+                <strong>Clientes do Google</strong>
+                <small>Fidelização e recorrência</small>
               </div>
             </div>
           </article>
 
-          <article class="review-card reveal">
+          <article class="card review-card reveal">
             <div class="stars">★★★★★</div>
             <p>“Amo o trabalho das meninas, arrasam nas unhas.”</p>
-            <div class="review-author">
+            <div class="review-meta">
               <div>
-                Clientes do Google
+                <strong>Clientes do Google</strong>
                 <small>Destaque para unhas e atendimento</small>
               </div>
             </div>
@@ -999,35 +1157,35 @@
         <div class="section-head reveal">
           <div>
             <h2>Galeria demonstrativa</h2>
-            <p>Imagens de demonstração para deixar a apresentação bonita. Depois você pode trocar por fotos reais do salão para aumentar ainda mais a taxa de conversão.</p>
+            <p>Estas imagens são de demonstração para apresentação. Depois você pode trocar por fotos reais do salão para aumentar ainda mais a confiança e a taxa de agendamento.</p>
           </div>
         </div>
 
-        <div class="gallery-grid">
-          <div class="gallery-card reveal"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1000&q=80" alt="Maquiagem e sobrancelha" /></div>
-          <div class="gallery-card reveal"><img src="https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?auto=format&fit=crop&w=1000&q=80" alt="Mulher em salão de beleza" /></div>
-          <div class="gallery-card reveal"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1000&q=80" alt="Cuidado facial" /></div>
-          <div class="gallery-card reveal"><img src="https://images.unsplash.com/photo-1607008829749-c0f284a497e6?auto=format&fit=crop&w=1000&q=80" alt="Unhas e manicure" /></div>
+        <div class="gallery">
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1000&q=80" alt="Maquiagem e sobrancelha" /></div>
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?auto=format&fit=crop&w=1000&q=80" alt="Mulher em salão" /></div>
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1000&q=80" alt="Cuidado facial" /></div>
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1607008829749-c0f284a497e6?auto=format&fit=crop&w=1000&q=80" alt="Manicure" /></div>
         </div>
       </div>
     </section>
 
     <section id="contato">
       <div class="container contact-grid">
-        <article class="contact-card reveal">
+        <article class="card contact-card reveal">
           <h3>Agende seu horário</h3>
-          <p>Entre em contato agora para consultar disponibilidade, valores e marcar seu atendimento com rapidez.</p>
+          <p>Atendimento com praticidade, contato rápido e informações claras para a cliente decidir sem esforço.</p>
 
           <div class="contact-info">
-            <div class="info-line">
+            <div class="contact-line">
               <strong>Endereço</strong>
               Av. Rui Baraúna, 1746 - União, Boa Vista - RR, 69313-748
             </div>
-            <div class="info-line">
+            <div class="contact-line">
               <strong>Telefone / WhatsApp</strong>
               (95) 99141-6175
             </div>
-            <div class="info-line">
+            <div class="contact-line">
               <strong>Funcionamento</strong>
               Aberto • Fecha às 18:00
             </div>
@@ -1040,7 +1198,7 @@
             <li>Aceita cartão de crédito, débito e pagamentos por NFC</li>
           </ul>
 
-          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;">
+          <div class="hero-actions" style="margin-top:24px; margin-bottom:0;">
             <a class="btn btn-whats" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio.">Chamar no WhatsApp</a>
             <a class="btn btn-dark" target="_blank" href="https://maps.google.com/?q=Av.%20Rui%20Bara%C3%BAna%2C%201746%20-%20Uni%C3%A3o%2C%20Boa%20Vista%20-%20RR%2C%2069313-748">Abrir no Maps</a>
           </div>
@@ -1056,8 +1214,8 @@
       <div class="container">
         <div class="cta-box reveal">
           <div>
-            <h2>Beleza com cuidado, capricho e resultado</h2>
-            <p>Site pronto para demonstração profissional. Quando você quiser, eu posso transformar esta versão em uma edição ainda mais forte com logo, nome da dona, paleta personalizada e fotos reais do salão.</p>
+            <h2>Beleza com cuidado, capricho e presença</h2>
+            <p>Agora o layout está reorganizado, sem o problema do botão superior invadindo a área do hero. A navegação também está mais limpa e o mobile ficou muito melhor com menu próprio.</p>
           </div>
           <a class="btn btn-primary" target="_blank" href="https://wa.me/5595991416175?text=Ol%C3%A1%2C%20quero%20agendar%20meu%20hor%C3%A1rio%20no%20Sal%C3%A3o%20de%20Beleza%20Jucy.">Reservar horário</a>
         </div>
@@ -1082,6 +1240,24 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const mobileLinks = mobilePanel.querySelectorAll('a');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('open');
+      menuBtn.classList.toggle('active', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobilePanel.classList.remove('open');
+        menuBtn.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
   </script>
 </body>
 </html>
